@@ -35,30 +35,41 @@ public class Battle {
         System.out.println("ディーラー"+e_math+"枚　合計点＿"+enemyPoint);
 
         for (int k = 2 ; playerPoint < 22; k++){
-            System.out.println("Hit？ or Stand？");
+            System.out.println("0:Hit？ or 1:Stand？");
             String judge = new Scanner(System.in).nextLine();
 
-            if (judge.equals("Hit")) {
+            if (judge.equals("0")) {
                 playerCard[k] = random.nextInt(11);
                 p_math += 1;
                 playerPoint += playerCard[k];
                 System.out.println("あなた"+p_math+"枚　　　合計点＿"+playerPoint);
                 System.out.println("ディーラー"+e_math+"枚　合計点＿"+enemyPoint);
-                if(playerPoint > 22){
+                
+                if(playerPoint >= 22){
                     System.out.println("バーストしました。あなたの負け！");
+                    break;
                 }
             }
             
-            if (judge.equals("Stand")) {
+            if (judge.equals("1")) {
                 System.out.println("あなた"+p_math+"枚　　　合計点＿"+playerPoint);
                 for (int i = 1; enemyPoint < 17; i++) {
                     enemyCard[i] = random.nextInt(11) ;
                     e_math += 1;
                     enemyPoint += enemyCard[i];
                     System.out.println("ディーラー"+e_math+"枚　合計点＿"+enemyPoint);
+                    if(enemyPoint >= 22){
+                        System.out.println("バーストしました。あなたの勝ち！！");
+                        break;
+                    }
                 }
             }
+            if(enemyPoint >= 17){
+                System.out.println("両者の点数を確定します");
+                System.out.println("あなた"+p_math+"枚　　　合計点＿"+playerPoint);
+                System.out.println("ディーラー"+e_math+"枚　合計点＿"+enemyPoint);
+                break;
+            }
         }
-
     }
 }
