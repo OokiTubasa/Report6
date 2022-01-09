@@ -5,7 +5,5 @@ public class Blackjack {
         Battle St = new Battle();
         St.preparation();
         St.play();
-
-
     }
 }

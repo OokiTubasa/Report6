@@ -2,14 +2,15 @@ package jp.ac.uryukyu.ie.e215753;
 import java.util.*;
 
 public class Battle {
-    int playerPoint;
-    int enemyPoint;
+    int playerPoint;//あなたの点数
+    int enemyPoint;//ディーラーの点数
     int[] playerCard = new int[50]; 
     int[] enemyCard = new int[50];
-    int p_math;
-    int e_math;
+    int p_math;//あなたのカード数
+    int e_math;//ディーラーのカード数
+    String Result;//勝敗
 
-
+    Win_lose ju = new Win_lose();
 
     void preparation(){
         Random random = new Random();
@@ -68,8 +69,18 @@ public class Battle {
                 System.out.println("両者の点数を確定します");
                 System.out.println("あなた"+p_math+"枚　　　合計点＿"+playerPoint);
                 System.out.println("ディーラー"+e_math+"枚　合計点＿"+enemyPoint);
+                Result = ju.judge(playerPoint,enemyPoint);
+                System.out.println(Result);
                 break;
             }
         }
     }
+
+
+
+
+
+
+
 }
+
